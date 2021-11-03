@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+  height: 100vh;
+  background: rgb(10, 0, 54);
+  display: flex;
+  justify-content: center;
+}
+
+section .runway {
+  width: 320px;
+  height: 100vh;
+  background: rgb(66, 66, 66);
+  border-left: 10px solid rgb(88, 88, 88);
+  border-right: 10px solid rgb(88, 88, 88);
+  position: relative;
+  transition: transform 1s linear;
+  transition-delay: 1s;
+  transform-origin: top;
+}
+section:active .runway {
+  transform-origin: bottom;
+  transform: scaleX(0.7) scaleY(0);
+  transition-delay: 0;
+}
+
+section .runway::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: repeating-linear-gradient(
+    transparent 0%,
+    transparent 50%,
+    #fff 50%,
+    #fff 100%
+  );
+  background-size: 20px 320px;
+  animation: runwayAnimation 0.6s linear infinite;
+}
+@keyframes runwayAnimation {
+  0% {
+    background-position-y: 0;
+  }
+  100% {
+    background-position-y: 320px;
+  }
+}
+
+section:active .runway::after {
+  animation-duration: 0.25s;
+}
+
+section img {
+  position: absolute;
+  max-width: 250px;
+  bottom: 150px;
+  filter: drop-shadow(10px 10px 0 rgba(0, 0, 0, 0.5));
+  transition: all 2s linear;
+  pointer-events: none;
+}
+
+section:active img {
+  max-width: 500px;
+  bottom: 20px;
+  filter: drop-shadow(200px 200px 0 rgba(0, 0, 0, 0));
+}
