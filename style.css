@@ -71,3 +71,14 @@ section:active img {
   bottom: 20px;
   filter: drop-shadow(200px 200px 0 rgba(0, 0, 0, 0));
 }
+
+@media screen and (max-width: 900px) {
+  section img {
+    max-width: 20vw;
+    bottom: 30vh;
+  }
+  section:active img {
+    max-width: 40vw;
+    bottom: 10vh;
+  }
+}
